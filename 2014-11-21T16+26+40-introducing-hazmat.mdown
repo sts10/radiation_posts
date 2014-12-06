@@ -1,0 +1,17 @@
+## Introducing Hazmat, a Reader for Radiation Blogs
+
+So over past 3 nights I've been working on a new little script very related to Radiation. I'm calling it Hazmat, and I think it's going to make using Radiation a lot better. 
+
+**The "Problem":** I am SO FLOORED that there are at least 7 Radiation blogs on totallynuclear.club currently (if you're not on [this list](https://github.com/sts10/hazmat/blob/master/following.rb) please let me know!). With 7 blogs it's not that big a deal to go visit each one in turn. But as a theorectical exercise, if there were, say, 50 Radiation blogs you wanted to follow, this would be kind of a pain.
+
+**The Idea:** Given that the HTML "product" of all Radiation blogs follow a similar pattern, I thought I'd make a simple web scraper that could pull blog posts from a set of Radiation blogs and display them in reverse chronological order for the reader. Kind of like Google Reader (but I didn't want to use RSS).
+
+And as for the name-- if Radiation spreads "nuclear waste", Hazmat makes it nice and organized and clean for the reader. 
+
+**The Hope:** My hope is that, by adding Hazmat to the equation, the combination of Radiation as the writer and Hazmat as the reader makes something like a loose Tumblr or general social network. Hazmat attempts to solve the problem of discovery, of making checking on other tilde sites easier, etc. We could even work in something like mention notifications down the line! The idea is to keep people engaged, but without shoving a bunch of restrictions down their throats. 
+
+So! I have a very early, fragile-but-working version of [Hazmat up on Github](https://github.com/sts10/hazmat). NOTE: Apparently some users are having trouble installing a Ruby gem called nokogiri that this version of Hazmat requires to function. I will try to figure out a workaround this week hopefully. 
+
+There are some basic installation instructions in the ReadMe. So far I have only cloned and run it on my local mahine (as opposed to my totally nuclear box). It should work in both environments though. 
+
+If you do test it out, please let me know if you find any issues or have any ideas. Or if you're not on the following list currently included in the repository (meaning that you're a Radiation user I don't yet know about!)! 

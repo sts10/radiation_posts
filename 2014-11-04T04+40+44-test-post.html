@@ -1,0 +1,11 @@
+<h2>Radiation v 0.1.1: Emergency Bug Fix Edition</h2>
+<p>
+Tonight I found out that I had a mistake in the strftime code when creating new posts. ~Erik <a href="https://twitter.com/sts10/status/529492274770894849">was nice enough to help</a> and now v 0.1.1 on GitHub seems to work</p>
+
+<p>The problem was in the post.rb file at approximately line 23. I used %e for the day instead of %d. %e uses a leading space for days less than 9, while %d does use the leading zero. As a result, new posts created between November 1st and November 9th would have had an unexpected space in their file names, which caused at least one problem with the date parsing upon blog publishing.  </p>
+<p>
+At ~erik's recommendation, I just changed the %e to %d, and pushed <a href="https://github.com/sts10/radiation/">v 0.1.1 to GitHub</a>.
+</p>
+<p>
+Should be good now if you just pull down the latest changes from <a href="https://github.com/sts10/radiation/">the repo on Github</a>. Really sorry for the trouble the bug may have caused!
+</p>

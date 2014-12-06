@@ -1,0 +1,9 @@
+## Hazmat v 0.1.0, Working on Totally Nuclear Boxes
+
+Phew. So, thanks to [~erik's help](https://twitter.com/erikprice/status/540702681976037377) and some other alterations, [Hazmat](https://github.com/sts10/hazmat) now just might work for users who do not have a nice Ruby environment already set up on their local machines. 
+
+Originally I ran into the problem of there being no graphical browser installed on Totally Nuclear boxes. One option, as ~erik suggested, was to have Hazmat open the produced newspaper.html file in a console browser called Lynx. However when I tested this I didn't really find it satisfactory. Plus I had already written a bunch of [CSS](https://github.com/sts10/hazmat/blob/master/css/styles.css) and [JavaScript](https://github.com/sts10/hazmat/blob/master/js/app.js) for a modern browser to use for the newspaper. 
+
+So my solution was to have Hazmat print its "newspaper" to the user's public_html directory. Then I just tell users which URL to visit to see their newspaper. Yes, this makes the produced newspaper public, but it's the best way I could come up with to have the result viewable in a modern browser rather than Lynx. I did however leave Lynx as a choice for users. 
+
+I should probably make some sort of CLI menu that allows users to edit which Radiation blogs they follow, but that can wait for now. I'm just psyched at the possibility that other users can actually use Hazmat now. 

@@ -1,0 +1,36 @@
+## Radiation v 0.3.3: BASH Functions for All! 
+
+Two big improvements from v 0.3.0:
+1. New menu option to delete posts 
+2. At the suggestion of [~bobbyllama](http://totallynuclear.club/~bobbyllama/), I also gave users a menu option to add a BASH function to their profile to make calling Radiation easier. 
+
+Previously I had just put this function in the README and gave some basic instructions for users to put it in their .bash_profile themselves. 
+
+```
+function radiation {
+    cwd=$(pwd)
+    cd ~/radiation
+    ruby bin/runner.rb
+    cd $cwd
+}
+```
+
+But now, if their .bash_profile doesn't have the two words "function radiation" in it, they are presented with a new menu option `b - Add radiation function to your bash_profile`. If they already have those two words next to each other in their bash_profile, the menu item is hidden. 
+
+I decided to go classy with this one and did it in one line of Ruby:
+
+```ruby
+puts "b - add radiation function to your bash_profile" if open('../.bash_profile').grep(/function radiation/) == []
+```
+When users do select / ask Radiation to add the functon to their bash_profile, Radiation obviously appends it to their profile, so as not to overwrite anything there already. I think that the 'a' option for append will create a .bash_profile if it doesn't exist already? Yeah, pretty sure I tested for the possibility. 
+
+Speaking of concise code, [runner.rb](https://github.com/sts10/radiation/blob/master/bin/runner.rb) is anything but right now. I've been able to but some Ruby methods over in [the blog model](https://github.com/sts10/radiation/blob/master/lib/blog.rb), including most of the work for the delete post menu option. But I should try to figure either (a) how to get more of the work from runner to the blog model or (b) find a new object/model to create for some of it (User?). No rush on that right now, as I kind deep down like having one big ass functional file like `runner.rb`.
+
+In general, though, as Radiation develops it becomes less techincally taxing on users, but more onerous for me or other new developers to come in and improve or alter it. For example, before this update users had to got to the `/radiation_posts/` directory and actually `rm` posts to delete them. And if they wanted a better usage experience they had to go edit their `~/.bash_profile` and enter some code-- things I would have been uncomfortable doing just 10 months ago. Of course they can still do both of these taks in this more manual way, but making it doable from the Radiation main menu made the codebase that much larger and thus more difficult to onboard and to maintain. 
+
+Maybe the question is: who's the customer and what's the goal? If they're total newbies to the command line, it's now easier for them to get up and running. But maybe they'll be learning less for the installation process and using Radiation. And if they're moderately-experienced developers, the codebase hasn't grown _that_ much in complexity, and thus I'd say the onboarding process hasn't gotten _that_ much more complex since, say, the 0.1.X versions. So in that way I've been serving both customers with these recent updates. 
+
+But is the end game to make the whole process, from installation to publishing, as automatic and easy as possible, with no coding necessary? So more like [Octopress](http://octopress.org/), a framework that has served as an inspiration to me already? That would mean a move toward interchangeables themes and the like, which could be fun. 
+
+I don't know, we'll see! Thanks for reading along so far! 
+

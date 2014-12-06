@@ -1,0 +1,9 @@
+## Radiation, Now With Markdown Support
+
+Super excited to show off [v 0.2.2](https://github.com/sts10/radiation), which allows users to compose posts in Markdown. 
+
+To do this I used the [kramdown library](http://kramdown.gettalong.org/), which I learned about from [~crm's](http://totallynuclear.club/~crm/) simple CMS. Basically kramdown takes Markdown and converts it into HTML. I choose to use GitHub flavored markdown by default. I also had to add 4 `gsub`s on one line to handle smart quotes. But it seems to work now! 
+
+Posts created in HTML will still be rendered in HTML and work just fine. And users who wish to contine to write posts in HTML may do so-- v 0.2.2 asks users when creating a new post whether they want to write in HTML or Markdown. So no worries!
+
+Let me know if you see anything weird though! 

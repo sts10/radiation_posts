@@ -1,0 +1,11 @@
+## Radiation v 0.3.7: Draft Support from Gunnar
+
+I finally got around to checking out [~gunnar](http://totallynuclear.club/~gunnar/)'s pull request(s) that added draft support to Radiation ([here's one of them](https://github.com/sts10/radiation/pull/8)). I merged it today, added one little check for blank posts, and pushed verison 0.3.6! I then added the "update timestamp" menu item and bumped it up one more to v 0.3.7. 
+
+As I explain in the new readme, to save a post as a draft, simply make the very first line of the document "draft". Posts marked as such will not be published. However you will be able to access them in the edit menu. To publish a draft, simply edit the draft, remove the word "draft" from the first line, and publish your blog. 
+
+This system was all gunnar's doing! Very awesome, very simply and intuitive! (PS. [here's gunnar's Github page](https://github.com/gunnarhafdal)).
+
+~gunnar has one other pull requests for me that I still need to look at. This third pull request, which deals with timezone management, confuses me a bit so I'll have to think about some more this week. 
+
+This has been my first experience recieving, evaluating, and merging a pull request from someone who I've never met. It's amazing what Git and GitHub allow open-source developers to do! Like, I got the idea before, but now that I've had a personal side project profit from the system, it hits home even more. I'm so grateful! 

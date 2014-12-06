@@ -1,0 +1,203 @@
+## Hazmat Installation Issues
+
+Last week I wrote [a quick post](http://totallynuclear.club/~schlink/#2014-11-21T16+26+40-introducing-hazmat) introducing y'all to a new program I had made called [Hazmat](https://github.com/sts10/hazmat). As of this writing it is at v 0.0.7. 
+
+Hazmat is basically a reader for Radiation blogs. To do this, it scrapes the Radiation blogs you tell it to follow. It does the HTML scraping using a Ruby gem called [nokogiri](http://www.nokogiri.org/). 
+
+I developed Hazmat to work either on the users' local machines or on their tilde box. However, assuming most folks don't have a nice Ruby environment setup on their local machines, I assumed that most people would find it easier to run it on their tildes boxes. 
+
+I had assumed this would be no problem, however when I went to install nokogiri on my totally nuclear box I got an error.  
+
+Here's the error I got after running `gem install nokogiri`:
+
+```
+Building native extensions.  This could take a while...
+ERROR:  Error installing nokogiri:
+  ERROR: Failed to build gem native extension.
+
+    /usr/bin/ruby2.0 extconf.rb
+mkmf.rb can't find header files for ruby at /usr/share/ruby/include/ruby.h
+
+
+Gem files will remain installed in /home/schlink/.gem/ruby/2.0/gems/nokogiri-1.6.5 for inspection.
+Results logged to /home/schlink/.gem/ruby/2.0/gems/nokogiri-1.6.5/ext/nokogiri/gem_make.out
+```
+
+This doesn't seem to be a very helpful error to me. What's strange is that other Ruby gems like tzinfo, kramdown, and coderay all installed on my totally nuclear box without any issues. 
+
+So I headed over to [nokogiri's installation instructions page](http://www.nokogiri.org/tutorials/installing_nokogiri.html) and looked for help. As you can see, the documentation says that `gem install nokogiri` should just work, however it does offer an alternative installation method, namely `sudo yum install -y rubygem-nokogiri`, which it says is for CentOS and RHEL. I didn't know either of those abbreviations before, but CentOS [seems to be a Linux distribution](http://www.centos.org/about/) and RHEL seems to be an abbreviation for Red Hat, another flavor of Linux I think. 
+
+Anyway since `sudo` commands are kind of intense, and totally nuclear is a somewhat fragile project we're sharing with over 100 people, I was hesistant to even try this solution on my own. When I got up the courage to enter the command, the box asked me for my password. I think I remember my password, but even if I knew it I didn't want to enter it and have something bad happen to the server. So I carefully backed out. 
+
+So, options going forward:
+
+1. Try to figure out if that sudo yum command is the way to go. 
+2. Try to find another Ruby gem or another method of scraping HTML pages (but I know nokogiri and the program works with it currently of course). 
+3. Re-work Hazmat as a web app hosted on something like Heroku, which would probably be more intuitive given what Hazmat does at this point. But I guess I just really don't like writing routes and figuring out Heroku stuff that I've forgot or had others do for me on previous projects. 
+
+If you have any ideas please let me know!  
+
+Update: 
+
+Erik [did something](https://twitter.com/erikprice/status/540681432151375872) (awesome!) and now I'm getting new errors (not awesome). 
+
+When I run `gem install nokogiri` I now get:
+
+```
+Building native extensions.  This could take a while...
+ERROR:  Error installing nokogiri:
+  ERROR: Failed to build gem native extension.
+
+    /usr/bin/ruby2.0 extconf.rb
+checking if the C compiler accepts ... yes
+Building nokogiri using packaged libraries.
+checking for iconv... yes
+************************************************************************
+IMPORTANT NOTICE:
+
+Buidling Nokogiri with a packaged version of libxml2-2.9.2
+with the following patches applied:
+  - 0001-Revert-Missing-initialization-for-the-catalog-module.patch
+  - 0002-Fix-missing-entities-after-CVE-2014-3660-fix.patch
+
+Team Nokogiri will keep on doing their best to provide security
+updates in a timely manner, but if this is a concern for you and want
+to use the system library instead; abort this installation process and
+reinstall nokogiri as follows:
+
+    gem install nokogiri -- --use-system-libraries
+        [--with-xml2-config=/path/to/xml2-config]
+        [--with-xslt-config=/path/to/xslt-config]
+
+If you are using Bundler, tell it to use the option:
+
+    bundle config build.nokogiri --use-system-libraries
+    bundle install
+
+Note, however, that nokogiri is not fully compatible with arbitrary
+versions of libxml2 provided by OS/package vendors.
+************************************************************************
+Extracting libxml2-2.9.2.tar.gz into tmp/x86_64-redhat-linux-gnu/ports/libxml2/2.9.2... OK
+Running patch with /home/schlink/.gem/ruby/2.0/gems/nokogiri-1.6.5/ports/patches/libxml2/0001-Revert-Missing-initialization-for-the-catalog-module.patch...
+Running 'patch' for libxml2 2.9.2... ERROR, review '/home/schlink/.gem/ruby/2.0/gems/nokogiri-1.6.5/ext/nokogiri/tmp/x86_64-redhat-linux-gnu/ports/libxml2/2.9.2/patch.log' to see what happened.
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+  --with-opt-dir
+  --without-opt-dir
+  --with-opt-include
+  --without-opt-include=${opt-dir}/include
+  --with-opt-lib
+  --without-opt-lib=${opt-dir}/lib64
+  --with-make-prog
+  --without-make-prog
+  --srcdir=.
+  --curdir
+  --ruby=/usr/bin/ruby2.0
+  --help
+  --clean
+  --use-system-libraries
+  --enable-static
+  --disable-static
+  --with-zlib-dir
+  --without-zlib-dir
+  --with-zlib-include
+  --without-zlib-include=${zlib-dir}/include
+  --with-zlib-lib
+  --without-zlib-lib=${zlib-dir}/lib
+  --enable-cross-build
+  --disable-cross-build
+/home/schlink/.gem/ruby/2.0/gems/mini_portile-0.6.1/lib/mini_portile.rb:279:in `block in execute': Failed to complete patch task (RuntimeError)
+  from /home/schlink/.gem/ruby/2.0/gems/mini_portile-0.6.1/lib/mini_portile.rb:271:in `chdir'
+  from /home/schlink/.gem/ruby/2.0/gems/mini_portile-0.6.1/lib/mini_portile.rb:271:in `execute'
+  from extconf.rb:297:in `block in patch'
+  from extconf.rb:294:in `each'
+  from extconf.rb:294:in `patch'
+  from /home/schlink/.gem/ruby/2.0/gems/mini_portile-0.6.1/lib/mini_portile.rb:108:in `cook'
+  from extconf.rb:268:in `block in process_recipe'
+  from extconf.rb:167:in `tap'
+  from extconf.rb:167:in `process_recipe'
+  from extconf.rb:455:in `<main>'
+
+
+Gem files will remain installed in /home/schlink/.gem/ruby/2.0/gems/nokogiri-1.6.5 for inspection.
+Results logged to /home/schlink/.gem/ruby/2.0/gems/nokogiri-1.6.5/ext/nokogiri/gem_make.out
+
+```
+
+
+And when I run `gem install nokogiri -- --use-system-libraries` I get a different error:
+
+
+```
+Building native extensions with: '--use-system-libraries'
+This could take a while...
+ERROR:  Error installing nokogiri:
+  ERROR: Failed to build gem native extension.
+
+    /usr/bin/ruby2.0 extconf.rb --use-system-libraries
+checking if the C compiler accepts ... yes
+Building nokogiri using system libraries.
+libxml2 version 2.6.21 or later is required!
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+  --with-opt-dir
+  --without-opt-dir
+  --with-opt-include
+  --without-opt-include=${opt-dir}/include
+  --with-opt-lib
+  --without-opt-lib=${opt-dir}/lib64
+  --with-make-prog
+  --without-make-prog
+  --srcdir=.
+  --curdir
+  --ruby=/usr/bin/ruby2.0
+  --help
+  --clean
+  --use-system-libraries
+  --with-zlib-dir
+  --without-zlib-dir
+  --with-zlib-include
+  --without-zlib-include=${zlib-dir}/include
+  --with-zlib-lib
+  --without-zlib-lib=${zlib-dir}/lib
+  --with-xml2-dir
+  --without-xml2-dir
+  --with-xml2-include
+  --without-xml2-include=${xml2-dir}/include
+  --with-xml2-lib
+  --without-xml2-lib=${xml2-dir}/lib
+  --with-libxml-2.0-config
+  --without-libxml-2.0-config
+  --with-pkg-config
+  --without-pkg-config
+  --with-xslt-dir
+  --without-xslt-dir
+  --with-xslt-include
+  --without-xslt-include=${xslt-dir}/include
+  --with-xslt-lib
+  --without-xslt-lib=${xslt-dir}/lib
+  --with-libxslt-config
+  --without-libxslt-config
+  --with-exslt-dir
+  --without-exslt-dir
+  --with-exslt-include
+  --without-exslt-include=${exslt-dir}/include
+  --with-exslt-lib
+  --without-exslt-lib=${exslt-dir}/lib
+  --with-libexslt-config
+  --without-libexslt-config
+
+
+Gem files will remain installed in /home/schlink/.gem/ruby/2.0/gems/nokogiri-1.6.5 for inspection.
+Results logged to /home/schlink/.gem/ruby/2.0/gems/nokogiri-1.6.5/ext/nokogiri/gem_make.out
+```
+
+2nd Update: Thanks to ~erik's work the nokogiri gem now successfully installs on TNC boxes. I pushed v 0.0.8 to use Lynx, a console-based browser. 

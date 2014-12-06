@@ -1,0 +1,26 @@
+## Radiation v 0.3.0: Your User Settings Are Safe With Me, Baby
+
+Some nice small things in this update. The biggest thing is yet another new way of handling user settings. 
+
+As you can see in the [v 0.3.0 config/environment](https://github.com/sts10/radiation/blob/master/config/environment.rb) I load two settings files:
+
+```ruby
+require_relative '../default_settings.rb'
+if File.exist?('../radiation_user_settings.rb')
+  require_relative '../../radiation_user_settings.rb'
+end 
+require_relative '../lib/time'
+require_relative '../lib/post'
+require_relative '../lib/blog'
+```
+
+First we load `'../default_settings.rb'`, which is within the `~/radiation/` directory. Since it's in that directory it will get overwritten every time the user re-installs Radiation. But that also means Radaition developers can edit update it with every version update. So basically that's where we'll put our sensible defaults. 
+
+Then, if the File exists, we `require_relative` `'../../radiation_user_settings.rb'`, a new file that lives outside of the `~/radiation` directory. Crucially, this file is loaded AFTER the default_settings file. Thus users can overwrite the global variables defined in default_settings and their changes will supercede the default_settings. HOWEVER, if the user fails to define a setting, Radiation will fall back to the default_settings. 
+
+Nifty right? I got the concept from Sublime Text, which has a similar default/user setting file system. 
+
+Other updates in v 0.3.0 include some sublte but very nice menu flow changes, most of which were suggested to me by [~bobbyllama](http://totallynuclear.club/~bobbyllama/). For example, when users create a new post or edit an existing post, they are asked explicitly whether or not they want to publish the blog at that point. I hope that makes it easier for new users to understand that when a post is created or edited, changes are pushed to the live site until Radiation publishes the blog. 
+
+Phew! This beast is coming along. But as always, when I move fast like this there might be some big problems I didn't find in my hasty testing. So if you find weirdness, let me know! 
+
