@@ -6,7 +6,7 @@ Three months ago I [wrote a post on Medium](https://medium.com/adventures-in-con
 
 At the time I liked it and definitely agreed with mechanical keyboard fanatics from Reddit that it indeed offered a better typing experience compared to Apple's standard scissor switch keyboard (you can read more about this in [the Medium post](https://medium.com/adventures-in-consumer-technology/my-latest-obsession-mechanical-keyboards-ef9e28089327)). 
 
-However, as I mentioned toward the end of my Medium post, I was already looking for a new keyboard: a [Happy Hacking Professional 2 Type-S](https://elitekeyboards.com/products.php?sub=pfu_keyboards,hhkbpro2&pid=pdkb400ws). My reasoning/excuse for purchasing a $331 keyboard, at the time, was the contention that it would be quiet enough to use in my new, open office. But I also had heard such good things about the HHKB Pro 2's Topre key switches that I had to try them out. 
+However, as I mentioned toward the end of my Medium post, I was already eyeing a new keyboard: a [Happy Hacking Professional 2 Type-S](https://elitekeyboards.com/products.php?sub=pfu_keyboards,hhkbpro2&pid=pdkb400ws), a keyboard made by a Japanese company called [PFU Limited](http://www.pfu.fujitsu.com/en/) ([Wikipedia](https://en.wikipedia.org/wiki/Happy_Hacking_Keyboard)). My reasoning/excuse for purchasing a $331 keyboard, at the time, was the contention that it would be quiet enough to use in my new, open office. But I also had heard such good things about the HHKB Pro 2's Topre key switches that I had to try them out. 
 
 So I got one. 
 
@@ -26,7 +26,9 @@ You'll also notice that the control key has replaced the caps lock key, which I 
 
 Basically I love this thing. It almost instantly made my KUL unusable because the Topre keys felt so much better. A lot of users on the [mechanical keyboards subreddit](http://www.reddit.com/r/MechanicalKeyboards) had compared Topre to Cherry MX Browns, which is of course what my KUL has, but others said that was an unfair comparison. I find myself agreeing with the latter: while Browns may be the Cherry MX switch _closest_ to the Topres in feel, they're actually pretty different. The Topres, which I much prefer in bascially every way, feel much more high quality. I know that's a pretty vague choice for a lead description, but that's the best I can do. It's difficult to describe something tactile I guess. The keys don't rattle or feel cheap. They travel down very smoothly, like the Cherry Reds or Blacks suposedly do. 
 
-Also, I think my KUL has what's referred to as Cherry stabilizers for the longer keys, which aren't as highly praised as other stabilizers like Costars-- users say the Cherry's feel more "mushy," and comparing to the the HHKB I agree. On the HHKB, whatever it uses to stabilize makes the long keys feel very similiar to the normal keys, which I think is best. Yet another difference between the KUL and HHKB out of the box is that the KUL keycaps are made of ABS plastic, while the HHKB is PBT. More on this below. 
+Also, I think my KUL has what's referred to as Cherry stabilizers for the longer keys, which aren't as highly praised as other stabilizers like Costars-- users say the Cherry's feel more "mushy," and comparing to the HHKB I agree. On the HHKB, whatever it uses to stabilize makes the long keys feel very similiar to the normal keys, which I think is best. Yet another difference between the KUL and HHKB out of the box is that the KUL keycaps are made of ABS plastic, while the HHKB is PBT. More on this below. 
+
+Oh and another cool thing about the HHKB Pro 2 is that it has two USB 2 hubs on it for, say, your mouse or a USB stick. I don't think they're powered though, meaning you can't charge your iPhone through them. But still, given that my Mac Book Air only has two ports, it's a nice feature. 
 
 One negative I saw read the HHKB is that it is both light-weight and its feet don't grip very well. I have to agree I was surprised that the rubber feet on the bottom of the HHKB wasn't very grippy, especially in comparison to the KUL, wich feels like a rock when it's on my desk). But in practice, when I'm typing, the HHKB doesn't move on my glossy wooden desk surface.
 
@@ -36,7 +38,7 @@ The HHKB is meant to be great right out of the box with very little configuratio
 
 ![HHKB DIP switch options](https://dl.dropboxusercontent.com/s/hctmbg5bvfh8zlx/2014-12-06%20at%205.30%20PM.png)
 
-Since I have a Mac I put it in Mac mode (switch 1 off, switch 2 on), then I definitely wanted the Delete key to be Backsapce (switch 3 on), and I also put switch 6 on so that a key press could wake up my sleeping Mac. 
+Since I have a Mac I put it in Mac mode (switch 1 off, switch 2 on), then I definitely wanted the Delete key to be Backspace (switch 3 on), and I also put switch 6 on so that a key press could wake up my sleeping Mac. 
 
 The next problem had to do with switching between application windows. On OS X by default, Command + \` cycles through the current application's windows (if it has more than one). I actually use this quite often. The problem one encounters with the HHKB is that the \` key is now in the top right-hand corner of the board, meaning this gesture takes two hands. Luckily in System Preferences you can reassign the key combo for this-- I just switched it to Command + Escape. You can do this by going into System Preferences > Keyboard > Shortcuts > Keyboard and then re-assigning "Move focus to next window" to Command + Escape. 
 
