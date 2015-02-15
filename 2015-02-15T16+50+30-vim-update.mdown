@@ -1,0 +1,62 @@
+## Getting Friendlier With Vim 
+
+On my old github blog I wrote [a post about my first time tipping a toe in the water of Vim](http://sts10.github.io/blog/2014/09/10/getting-started-with-vim/), an intensely keystroke-based text editor. Depsite getting the basics down, I still did 95% of my coding in Sublime Text 2, my old go-to editor. 
+
+However in the last few weeks I had a need for a fresh project to take up, and, considering that at least some of my future work will be on remote servers which will force me away from editors like Sublime Text, I figured I'd resume my exploration of Vim.
+
+I went through most of [Derek Wyatt's video tutorials](http://derekwyatt.org/vim/tutorials/novice/#Welcome) and then through [tuts+](http://code.tutsplus.com/articles/25-vim-tutorials-screencasts-and-resources--net-14631) I found [vimcasts.org](http://vimcasts.org/episodes/page/7/), which helped even more. 
+
+Basically after the first pass with Vim I got the basic movements down. I installed NERDTree, which helped with project and window management. And I copied and pasted some suggested settings and key mapping into my .vimrc file. But there were still plenty of things I was far more comfortable doing in Sublime Text.
+
+A partial list of these tasks would include: advanced copy and pasting, the ability to quickly comment and uncomment lines of code, a certain amount of code and variable autocompletion, spellcheck functionality, ease of indenting lines, and some others. 
+
+I ended up solving these problems with edits to my vimrc file, plus the addition of two new plugins: [NERDCommenter](https://github.com/scrooloose/nerdcommenter) and [Unimpaired](https://github.com/tpope/vim-unimpaired). NERDCommenter allows you to comment out lines of code based on its syntax. My prefered mappings at this point are: 
+
+```
+nmap <C-l> <Leader>c<Space>
+vmap <C-l> <Leader>c<Space>gv
+imap <C-l> <ESC><Leader>c<Space>a
+```
+
+And Unimpaired I only use for 4 commands that allows me to move single or multiple liens up and down a document. This is not something I ever did using Sublime Text but after first struggling with simple cut and pasting in Vim and then watching [this Vimcast on "bubbling text"](http://vimcasts.org/episodes/bubbling-text/) I decided to set it up and it seems useful. Mappings:
+
+```
+nmap <C-k> [e
+nmap <C-j> ]evmap <C-k> [egv
+vmap <C-j> ]egv
+```
+
+Beyond those plugin mappings I also wrote some custom mappings for standard Vim functions. Here is a sample:
+
+```
+" j and k don't skip over wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" H to beginning of line, L to the end
+noremap H ^
+noremap L $
+
+noremap <c-a> ^
+noremap <c-e> $
+
+" J and K move up and down 10 lines
+noremap J 10j
+noremap K 10k
+
+" Tab and Shift tab to indent and un-indent
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+
+" D deletes to the end of the line, as it should
+noremap D d$
+
+" X removes line without placing it in the default registry
+nmap X "_dd
+
+" Control + p pastes from the 'yank register', and the ] formats it to indent you're pasting into (http://vimcasts.org/episodes/  meet-the-yank-register/)
+nmap <c-p> "0]P
+
+```
+
+You can see my whole setup here in [my new .vimrc file](https://github.com/sts10/terminal_and_vim_settings/blob/master/vimrc).

@@ -3,13 +3,15 @@
 <blockquote class="twitter-tweet" lang="en"><p>Suspect fires on bounty hunters, twirling in their <a href="https://twitter.com/hashtag/Burberry?src=hash">#Burberry</a></p>&mdash; Schlink Bot (@schlinkbot) <a href="https://twitter.com/schlinkbot/status/546412459830288384">December 20, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Over the past few weeks I've been playing around with different ways of making Twitter bots (automated Twitter accounts). I don't have much to show for it yet-- most of my experimentation has been with [@schlinkbot](http://twitter.com/schlinkbot), which probably doesn't look to impressive at this point. But I've learned some foundational stuff. 
+Over the past few weeks I've been playing around with different ways of making Twitter bots (automated Twitter accounts). I don't have much to show for it yet-- most of my experimentation has been with [@schlinkbot](http://twitter.com/schlinkbot), which probably doesn't look too impressive at this point. But I've learned some foundational stuff. 
 
-Anyway, in this post I'm going to be going over how to use a Ruby gem called [Twitter Ebooks](https://github.com/mispy/twitter_ebooks) by gitHub user mispy to make a Twitter bot. There are of ocurse other ways of doing this, but Twitter Ebooks has some nice features. You can read more about Twitter Ebooks at [the project's wiki](http://www.rubydoc.info/github/mispy/twitter_ebooks).
+Anyway, in this post I'm going to be going over how to use a Ruby gem called [Twitter Ebooks](https://github.com/mispy/twitter_ebooks) by GitHub user mispy to make a Twitter bot. There are of ocurse other ways of doing this, but Twitter Ebooks has some nice features. **Note:** I'm still new to this gem/framework, so excuse any problems. But I did get the bot up and tweeting and replying. 
+
+You can read more about Twitter Ebooks at [the project's wiki](http://www.rubydoc.info/github/mispy/twitter_ebooks).
 
 ### Wait, What is This? 
 
-Right, so Twitter Ebooks is basically a framework written in Ruby to easily allow users to create their own Twitter bots. You can think of it like a Twitter bot factory. We want to use it to make one Twitter bot. 
+Right, so Twitter Ebooks is basically a framework written in Ruby that allows users to create their own Twitter bots. You can think of it like a Twitter bot factory. We want to use it to make one Twitter bot. 
 
 Our bot, using Twitter Ebooks, will connect to Twitter using the [Twitter API](https://dev.twitter.com/overview/documentation). This will allow us to send tweets and listen for mentions of our bot. Actually running the bot involves us: (1) creating a twitter account for the bot, (2) registering a Twitter app for the bot, (3) creating a bot with Twitter Ebooks, then (4) running the Ruby code that runs the bot. 
 
@@ -25,9 +27,9 @@ You'll need a basic Ruby coding environment. I think the barem inimum would be a
 
 ### Setup Step 1: Configuration
 
-First step is to install the Twitter Ebooks Ruby gem. To do this open your Terminal and enter `gem install twitter_ebooks`. Hopefully it installs successfully. 
+First step is to install the Twitter Ebooks Ruby gem. To do this open your Terminal and enter `gem install twitter_ebooks`. Hopefully it installs successfully. If it doesn't you probably don't have XCode or Command Line Tools set up correctly, or you don't have RVM (or an equivalent Ruby version manager) installed correctly (see above).  
 
-Now you'll want to use the Unix commands `cd` and `mkdir` to make a folder for our bot project. When you're in the proper directory, run `ebooks new my_test_bot` (or whatever you want to call your bot). Now open the `bots.rb` file in your code editor. This is where you tell your bot how to act and thus will be where we'll do most of our coding. 
+Now you'll want to use the Unix commands `cd` and `mkdir` to make a folder for your bot project. When you're in the proper directory, run `ebooks new my_test_bot` (or whatever you want to call your bot). Now open the `bots.rb` file in your code editor. This is where you tell your bot how to act and thus will be where we'll do most of our coding. 
 
 This would be a good time to go create the Twitter account that will be your bot. For example, I went and made @schlinkbot. Write down the password somewhere. 
 
@@ -39,7 +41,7 @@ Cool. We now have 4 long token/secrets on this page. These 4 codes will allow ou
 
 Now, while keeping your browser open to that page, open `bots.rb` in your text editor. 
 
-By default you're given a bare-bones exmaple, but I'd suggest replacing that with my slightly more built-up example below, which I based off of the bot example in [this repo](https://github.com/mispy/ebooks_example): 
+By default you're given a bare-bones example, but I'd suggest replacing that with my slightly more built-up example below, which I based off of the bot example in [this repo](https://github.com/mispy/ebooks_example): 
 
 ```ruby
 require 'twitter_ebooks'
@@ -185,4 +187,4 @@ As you've probably surmized, following this guide means you'll only be able to r
 
 ### Going Forward 
 
-There are plenty more "listeners" in the `bots.rb` file to play with-- `on_message`, `on_follow`, `on_timeline` for example. For more ideas, check out [the bots.rb file of the example bot](https://github.com/mispy/ebooks_example/blob/master/bots.rb). 
+There are plenty more "event handlers" in the `bots.rb` file to play with-- `on_message`, `on_follow`, `on_timeline` for example. For more ideas, check out [the bots.rb file of the example bot](https://github.com/mispy/ebooks_example/blob/master/bots.rb). 
